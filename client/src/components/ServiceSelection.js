@@ -1,28 +1,19 @@
-// src/components/ServiceSelection.js
-import React, { useState } from 'react';
+import React from 'react';
 
-const ServiceSelection = ({ category, onSelectService }) => {
-  // Ejemplo de servicios según la categoría seleccionada
-  const services = {
-    Uñas: ['Esculpidas', 'Kapping'],
-    Pestañas: ['Lifting', 'Extensiones'],
-    Otros: ['Peluquería', 'Depilación'],
-  };
-
-  const handleServiceSelect = (service) => {
-    onSelectService(service); // Llama a la función de callback con el servicio seleccionado
-  };
-
+const ServiceSelection = ({ services, onSelectService }) => {
   return (
-    <div>
-      <h2>Selecciona un servicio de {category}:</h2>
-      <ul>
-        {services[category].map((service, index) => (
-          <li key={index}>
-            <button onClick={() => handleServiceSelect(service)}>{service}</button>
-          </li>
+    <div className="service-selection">
+      <h1>Selecciona un servicio</h1>
+      <div className="services">
+        {services.map((service) => (
+          <button
+            key={service.id}
+            onClick={() => onSelectService(service.id)}
+          >
+            {service.name}
+          </button>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

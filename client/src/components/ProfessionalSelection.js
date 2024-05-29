@@ -1,31 +1,19 @@
-// src/components/ProfessionalSelection.js
-import React, { useState } from 'react';
+import React from 'react';
 
-const ProfessionalSelection = ({ service, onSelectProfessional }) => {
-  // Ejemplo de profesionales según el servicio seleccionado
-  const professionals = {
-    Esculpidas: ['Laura', 'Carlos'],
-    Kapping: ['Juan', 'María'],
-    Lifting: ['Ana', 'Pedro'],
-    Extensiones: ['Luisa', 'Diego'],
-    Peluquería: ['Rosa', 'Sergio'],
-    Depilación: ['Elena', 'Martín'],
-  };
-
-  const handleProfessionalSelect = (professional) => {
-    onSelectProfessional(professional); // Llama a la función de callback con el profesional seleccionado
-  };
-
+const ProfessionalSelection = ({ professionals, onSelectProfessional }) => {
   return (
-    <div>
-      <h2>Selecciona un profesional para {service}:</h2>
-      <ul>
-        {professionals[service].map((professional, index) => (
-          <li key={index}>
-            <button onClick={() => handleProfessionalSelect(professional)}>{professional}</button>
-          </li>
+    <div className="professional-selection">
+      <h1>¿Con quién te quieres atender?</h1>
+      <div className="professionals">
+        {professionals.map((professional) => (
+          <button
+            key={professional.id}
+            onClick={() => onSelectProfessional(professional.id)}
+          >
+            {professional.name}
+          </button>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

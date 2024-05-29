@@ -1,23 +1,19 @@
-// src/components/CategorySelection.js
-import React, { useState } from 'react';
+import React from 'react';
 
-const CategorySelection = ({ onSelectCategory }) => {
-  const categories = ['Uñas', 'Pestañas', 'Otros']; // Ejemplo de categorías disponibles
-
-  const handleCategorySelect = (category) => {
-    onSelectCategory(category); // Llama a la función de callback con la categoría seleccionada
-  };
-
+const CategorySelection = ({ categories, onSelectCategory }) => {
   return (
-    <div>
-      <h2>Selecciona una categoría de servicio:</h2>
-      <ul>
-        {categories.map((category, index) => (
-          <li key={index}>
-            <button onClick={() => handleCategorySelect(category)}>{category}</button>
-          </li>
+    <div className="category-selection">
+      <h1>¿Qué servicio te gustaría reservar?</h1>
+      <div className="categories">
+        {categories.map((category) => (
+          <button
+            key={category.id}
+            onClick={() => onSelectCategory(category.id)}
+          >
+            {category.name}
+          </button>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
